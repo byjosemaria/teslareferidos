@@ -10,6 +10,7 @@ desde el enlace recibe **1.000 km de Supercarga gratis**, y yo otros tantos.
 ```
 .
 ├── index.html                          Landing principal (CSS y JS inline)
+├── 404.html                            Página de error (rutas absolutas)
 ├── guias/
 │   ├── como-funciona-referidos-tesla.html
 │   ├── calculadora-coste-carga.html
@@ -19,6 +20,12 @@ desde el enlace recibe **1.000 km de Supercarga gratis**, y yo otros tantos.
 ├── assets/
 │   ├── og-image.png                    Imagen para compartir (1200×630)
 │   └── autor.png                       Imagen del bloque de autor (600×600)
+├── scripts/
+│   └── actualizar-fecha.sh             Actualiza la fecha de verificación en todo el sitio
+├── .github/
+│   └── workflows/
+│       └── recordatorio-verificacion.yml   Aviso mensual si la fecha se queda vieja
+├── FECHA-VERIFICACION.txt              Fuente de verdad de la fecha (ISO)
 ├── robots.txt
 ├── sitemap.xml
 ├── .nojekyll                           Evita el procesado de Jekyll en GitHub Pages
@@ -37,13 +44,12 @@ El sitio se publica desde la **raíz** del repositorio.
 2. Sube el contenido:
 
    ```bash
-   git remote add origin https://github.com/byjosemaria/teslareferidos.git
-   git branch -M main
-   git push -u origin main
+   git remote add origin git@github.com:byjosemaria/teslareferidos.git
+   git push -u origin master
    ```
 
 3. En el repositorio: **Settings → Pages → Source: Deploy from a branch →
-   Branch: `main`, Folder: `/ (root)`**.
+   Branch: `master`, Folder: `/ (root)`**.
 4. En uno o dos minutos estará en <https://byjosemaria.github.io/teslareferidos/>.
 
 ## Cambiar el enlace de referido
@@ -60,13 +66,23 @@ No olvides actualizar también `sitemap.xml` si cambia el dominio.
 ## Mantenimiento
 
 - **Fecha de verificación:** el texto «Oferta comprobada el 30 de octubre de 2026»
-  aparece en el hero y en el pie de las cuatro páginas. Actualízala cuando
-  compruebes la oferta, o perderá credibilidad.
+  aparece en el hero y en el pie de todas las páginas. La fuente de verdad es
+  `FECHA-VERIFICACION.txt` (formato `AAAA-MM-DD`). Cuando compruebes que la
+  oferta sigue vigente, ejecuta:
 
   ```bash
-  grep -rl "30 de octubre de 2026" --include="*.html" . \
-    | xargs sed -i 's/30 de octubre de 2026/NUEVA FECHA/g'
+  ./scripts/actualizar-fecha.sh              # usa la fecha de hoy
+  ./scripts/actualizar-fecha.sh 2026-11-15   # o una fecha concreta
+  git add -A && git commit -m "Verifica la oferta" && git push
   ```
+
+  El script reescribe la fecha en español en todos los HTML, el `README.md` y
+  el `file.txt`, y actualiza `FECHA-VERIFICACION.txt`.
+
+  **No se actualiza sola a propósito.** El texto afirma que *tú* has comprobado
+  la oferta ese día; si cambiara sola cada mañana sería una afirmación falsa.
+  Para no olvidarlo, el workflow `recordatorio-verificacion.yml` se ejecuta el
+  día 1 de cada mes y abre un issue si han pasado más de 45 días.
 
 - Las cifras de precios y consumos de las guías son **orientativas**; conviene
   revisarlas cada temporada.
@@ -74,3 +90,6 @@ No olvides actualizar también `sitemap.xml` si cambia el dominio.
   El texto usa fórmulas condicionales a propósito: no prometas cifras cerradas.
 - La imagen `assets/og-image.png` se generó renderizando HTML con Chrome
   headless a 1200×630, y `assets/autor.png` a 600×600 con el mismo método.
+- `404.html` usa rutas absolutas (`/teslareferidos/...`) porque GitHub Pages la
+  sirve en cualquier profundidad de URL. Si algún día cambia el nombre del
+  repositorio o se pasa a dominio propio, hay que actualizar esas rutas.

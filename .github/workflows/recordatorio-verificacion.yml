@@ -1,0 +1,68 @@
+name: Recordatorio de verificación
+
+# Avisa por issue cuando la fecha de verificación de la oferta se queda vieja.
+# No modifica el contenido: solo recuerda revisar el enlace.
+
+on:
+  schedule:
+    # El día 1 de cada mes a las 09:00 UTC
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  recordatorio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calcular días desde la última verificación
+        id: calc
+        run: |
+          FECHA=$(tr -d '[:space:]' < FECHA-VERIFICACION.txt)
+          if ! date -u -d "$FECHA" +%s > /dev/null 2>&1; then
+            echo "Fecha inválida en FECHA-VERIFICACION.txt: $FECHA" >&2
+            exit 1
+          fi
+          DIAS=$(( ( $(date -u +%s) - $(date -u -d "$FECHA" +%s) ) / 86400 ))
+          echo "Última verificación: $FECHA ($DIAS días)"
+          echo "dias=$DIAS" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir aviso si toca revisar
+        if: steps.calc.outputs.dias >= 45
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DIAS: ${{ steps.calc.outputs.dias }}
+        run: |
+          TITULO="Revisar la oferta de referidos"
+
+          ABIERTOS=$(gh issue list --state open --search "$TITULO in:title" --json number --jq 'length')
+          if [ "$ABIERTOS" -gt 0 ]; then
+            echo "Ya hay un aviso abierto. Nada que hacer."
+            exit 0
+          fi
+
+          {
+            echo "Han pasado **$DIAS días** desde la última verificación de la oferta."
+            echo
+            echo "Fecha registrada: \`$(cat FECHA-VERIFICACION.txt)\`"
+            echo
+            echo "## Qué hacer"
+            echo
+            echo "1. Abre <https://ts.la/josmara116770> y comprueba que sigue mostrando 1.000 km de Supercarga."
+            echo "2. Si sigue vigente, actualiza la fecha:"
+            echo
+            echo '   ```bash'
+            echo "   ./scripts/actualizar-fecha.sh"
+            echo '   git add -A && git commit -m "Verifica la oferta" && git push'
+            echo '   ```'
+            echo
+            echo "3. Si el importe o las condiciones han cambiado, actualiza el contenido antes de cerrar este aviso."
+            echo
+            echo "Cuando termines, cierra el issue."
+          } > /tmp/cuerpo.md
+
+          gh issue create --title "$TITULO" --body-file /tmp/cuerpo.md

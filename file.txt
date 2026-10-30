@@ -11,6 +11,13 @@ teslareferidos/                     (raíz del repo = sitio publicado)
 │   └── autor.png                   Imagen del bloque de autor 600x600
 ├── robots.txt
 ├── sitemap.xml
+├── 404.html                        Página de error (rutas absolutas)
+├── FECHA-VERIFICACION.txt          Fecha de verificación en formato ISO
+├── scripts/
+│   └── actualizar-fecha.sh         Actualiza la fecha en todo el sitio
+├── .github/
+│   └── workflows/
+│       └── recordatorio-verificacion.yml
 ├── .nojekyll
 ├── README.md
 ├── file.txt
