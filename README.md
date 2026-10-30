@@ -12,6 +12,7 @@ desde el enlace recibe **1.000 km de Supercarga gratis**, y yo otros tantos.
 ├── index.html                          Landing principal (CSS y JS inline)
 ├── guias/
 │   ├── como-funciona-referidos-tesla.html
+│   ├── calculadora-coste-carga.html
 │   ├── codigo-referido-tesla.html
 │   ├── cuanto-cuesta-cargar-un-tesla.html
 │   └── model-3-vs-model-y.html

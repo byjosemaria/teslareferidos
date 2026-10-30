@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de coste de carga de un Tesla (2026)</title>
+    <meta name="description" content="Calcula cuánto cuesta cargar tu Tesla al año según consumo, kilómetros y precio del kWh. Incluye el valor real de 1.000 km de Supercarga gratis.">
+    <link rel="canonical" href="https://byjosemaria.github.io/teslareferidos/guias/calculadora-coste-carga.html">
+
+    <meta property="og:title" content="Calculadora de coste de carga de un Tesla">
+    <meta property="og:description" content="Cuánto cuesta cargar tu Tesla al año y cuánto valen realmente 1.000 km de Supercarga gratis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://byjosemaria.github.io/teslareferidos/guias/calculadora-coste-carga.html">
+    <meta property="og:image" content="https://byjosemaria.github.io/teslareferidos/assets/og-image.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Tesla Referidos">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e82127'/%3E%3Cpath d='M17.5 6 9 17h5.5L13 26l8.5-12H16l1.5-8z' fill='%23fff'/%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #171a20;
+            --dark: #0d0e12;
+            --white: #ffffff;
+            --gray: #5c5e62;
+            --light: #f4f4f4;
+            --border: #e3e3e3;
+            --red: #e82127;
+            --green: #1f9d55;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--gray);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+        .container-wide { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Navbar ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .navbar .inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            height: 68px;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .logo em { font-style: normal; color: var(--red); }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover { color: var(--white); }
+
+        .nav-cta {
+            padding: 9px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+        /* ---------- Cabecera ---------- */
+        .article-header {
+            background: radial-gradient(1000px 500px at 50% -20%, #262a33 0%, var(--dark) 60%);
+            color: var(--white);
+            padding: 70px 0 60px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1.1rem;
+        }
+
+        .article-header h1 {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            line-height: 1.18;
+            margin-bottom: 1rem;
+            max-width: 720px;
+        }
+
+        .article-header .lead {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            max-width: 600px;
+        }
+
+        /* ---------- Calculadora ---------- */
+        .calc-section { padding: 60px 0 40px; }
+
+        .calc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .calc-inputs {
+            padding: 2rem 1.75rem;
+            background: var(--white);
+        }
+
+        .calc-results {
+            padding: 2rem 1.75rem;
+            background: var(--light);
+            border-left: 1px solid var(--border);
+        }
+
+        .field { margin-bottom: 1.5rem; }
+        .field:last-child { margin-bottom: 0; }
+
+        .field-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .field output {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--red);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .field select {
+            width: 100%;
+            padding: 11px 14px;
+            font: inherit;
+            font-size: 0.92rem;
+            color: var(--black);
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .field select:focus-visible,
+        .field input[type="range"]:focus-visible {
+            outline: 2px solid var(--red);
+            outline-offset: 2px;
+        }
+
+        .field input[type="range"] {
+            width: 100%;
+            height: 22px;
+            accent-color: var(--red);
+            cursor: pointer;
+        }
+
+        .result-main {
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.35rem;
+        }
+
+        .result-big {
+            display: block;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--red);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .result-list { list-style: none; }
+
+        .result-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .result-list li:last-child { border-bottom: none; }
+
+        .result-list strong {
+            color: var(--black);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .result-list .saving strong { color: var(--green); }
+
+        .calc-note {
+            margin-top: 1.25rem;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+
+        /* ---------- Texto ---------- */
+        .article { padding: 40px 0 80px; }
+
+        .article h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--black);
+            letter-spacing: -0.3px;
+            margin: 2.5rem 0 0.9rem;
+        }
+
+        .article p { margin-bottom: 1.1rem; font-size: 1.02rem; }
+
+        .article ul { margin: 0 0 1.3rem 1.4rem; }
+        .article li { margin-bottom: 0.45rem; font-size: 1.02rem; }
+        .article strong { color: var(--black); }
+        .article a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta-box {
+            background: radial-gradient(600px 300px at 50% 0%, #262a33 0%, var(--dark) 70%);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .cta-box h2 { color: var(--white); margin: 0 0 0.75rem; font-size: 1.4rem; }
+
+        .cta-box p {
+            opacity: 0.85;
+            margin: 0 auto 1.5rem;
+            max-width: 440px;
+            font-size: 0.98rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 32px;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary { background: var(--red); color: var(--white); }
+        .btn-primary:hover { background: #c81a20; }
+        .cta-box a { text-decoration: none; }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            background: var(--black);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2.5rem 24px;
+            font-size: 0.8rem;
+        }
+
+        .footer a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .footer a:hover { color: var(--red); }
+        .footer p + p { margin-top: 0.4rem; }
+
+        .footer .links {
+            margin-top: 1.1rem;
+            display: flex;
+            gap: 1.1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .note {
+            max-width: 640px;
+            margin: 1.1rem auto 0;
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 760px) {
+            .calc { grid-template-columns: 1fr; }
+            .calc-results { border-left: none; border-top: 1px solid var(--border); }
+            .article-header { padding: 55px 0 45px; }
+            .calc-section { padding: 40px 0 20px; }
+            .nav-cta { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="inner">
+            <a href="../index.html" class="logo">Tesla<em>Referidos</em></a>
+            <a href="../index.html" class="back-link">← Volver al inicio</a>
+            <a href="https://ts.la/josmara116770" class="nav-cta" target="_blank" rel="noopener sponsored">Reserva tu Tesla</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container">
+            <span class="tag">Herramienta</span>
+            <h1>Calculadora de coste de carga de un Tesla</h1>
+            <p class="lead">Mueve los controles y comprueba cuánto te costaría cargar tu coche al año, y cuánto valen de verdad los 1.000 km de Supercarga gratis.</p>
+        </div>
+    </header>
+
+    <section class="calc-section">
+        <div class="container-wide">
+            <div class="calc">
+
+                <div class="calc-inputs">
+                    <div class="field">
+                        <div class="field-head">
+                            <label for="modelo">Modelo</label>
+                        </div>
+                        <select id="modelo">
+                            <option value="15" selected>Model 3 — 15 kWh/100 km</option>
+                            <option value="17">Model Y — 17 kWh/100 km</option>
+                            <option value="18">Otro eléctrico — 18 kWh/100 km</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-head">
+                            <label for="consumo">Consumo</label>
+                            <output id="out-consumo" for="consumo">15,0 kWh/100 km</output>
+                        </div>
+                        <input type="range" id="consumo" min="10" max="30" step="0.5" value="15">
+                    </div>
+
+                    <div class="field">
+                        <div class="field-head">
+                            <label for="km">Kilómetros al año</label>
+                            <output id="out-km" for="km">15.000 km</output>
+                        </div>
+                        <input type="range" id="km" min="5000" max="40000" step="1000" value="15000">
+                    </div>
+
+                    <div class="field">
+                        <div class="field-head">
+                            <label for="precio-casa">Precio en casa</label>
+                            <output id="out-casa" for="precio-casa">0,15 €/kWh</output>
+                        </div>
+                        <input type="range" id="precio-casa" min="0.05" max="0.35" step="0.01" value="0.15">
+                    </div>
+
+                    <div class="field">
+                        <div class="field-head">
+                            <label for="precio-super">Precio en Supercargador</label>
+                            <output id="out-super" for="precio-super">0,42 €/kWh</output>
+                        </div>
+                        <input type="range" id="precio-super" min="0.25" max="0.70" step="0.01" value="0.42">
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="result-main">
+                        <span class="result-label">Valor de tus 1.000 km gratis</span>
+                        <span class="result-big" id="r-valor">63,00 €</span>
+                    </div>
+
+                    <ul class="result-list">
+                        <li><span>Coste por 100 km en casa</span><strong id="r-100-casa">2,25 €</strong></li>
+                        <li><span>Coste por 100 km en Supercargador</span><strong id="r-100-super">6,30 €</strong></li>
+                        <li><span>Cargando siempre en casa</span><strong id="r-anual-casa">338 €</strong></li>
+                        <li><span>Cargando siempre en Supercargador</span><strong id="r-anual-super">945 €</strong></li>
+                        <li><span>Lo mismo en un coche de gasolina</span><strong id="r-gasolina">1560 €</strong></li>
+                        <li class="saving"><span>Ahorro anual frente a gasolina</span><strong id="r-ahorro">+1223 €</strong></li>
+                    </ul>
+
+                    <p class="calc-note">Comparativa de gasolina calculada con 6,5 l/100 km y 1,60 €/l. Cambia los valores para ajustarlo a tu caso.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <main class="article">
+        <div class="container">
+
+            <h2>Cómo se calcula</h2>
+
+            <p>Todo sale de una única fórmula: <strong>consumo × precio del kWh</strong>. Si tu coche gasta 15 kWh cada 100 km y el kWh te cuesta 0,15 €, cada 100 km te salen 2,25 €.</p>
+
+            <p>Para el total anual se multiplica ese coste por los kilómetros que haces al año. Y para los 1.000 km de Supercarga, se calcula la energía que consumirías en esos 1.000 km y se multiplica por el precio del Supercargador, que es donde se canjean.</p>
+
+            <h2>Qué tener en cuenta</h2>
+
+            <ul>
+                <li><strong>El consumo real no es fijo.</strong> Sube en autopista, con frío, con carga o con llantas grandes. El valor por defecto es una media mixta razonable.</li>
+                <li><strong>Los precios cambian.</strong> El precio del kWh en casa depende de tu tarifa; el del Supercargador varía por estación y franja horaria. Ajusta los controles con tus datos.</li>
+                <li><strong>Los 1.000 km se canjean en la red de Tesla.</strong> Si cargas siempre en casa, el ahorro real de esos kilómetros es menor: los aprovecharás sobre todo en viajes.</li>
+            </ul>
+
+            <p>Si quieres el detalle completo de tarifas y escenarios, está en la guía <a href="cuanto-cuesta-cargar-un-tesla.html">cuánto cuesta cargar un Tesla en España</a>.</p>
+
+            <p class="disclaimer">Los resultados son una estimación orientativa basada en los valores que introduzcas. No constituyen una oferta ni una previsión de coste garantizada. Los precios de la energía y las condiciones del programa de referidos los fija cada proveedor y Tesla, y pueden cambiar.</p>
+
+            <div class="cta-box">
+                <h2>Ya tienes los números</h2>
+                <p>Si te cuadran, reserva tu Tesla desde mi enlace y empieza con 1.000 km de Supercarga gratis. Yo también los recibo.</p>
+                <a href="https://ts.la/josmara116770" class="btn btn-primary" target="_blank" rel="noopener sponsored">Reserva con mi enlace</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Tesla Referidos. Información no oficial.</p>
+            <p>Este sitio no está afiliado oficialmente con Tesla, Inc.</p>
+            <nav class="links">
+                <a href="../index.html">Inicio</a>
+                <a href="como-funciona-referidos-tesla.html">Referidos</a>
+                <a href="cuanto-cuesta-cargar-un-tesla.html">Coste de carga</a>
+                <a href="calculadora-coste-carga.html">Calculadora</a>
+                <a href="model-3-vs-model-y.html">Model 3 vs Model Y</a>
+                <a href="codigo-referido-tesla.html">Código referido</a>
+            </nav>
+            <p class="note">Oferta comprobada el 30 de octubre de 2026. Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. «Tesla» y los nombres de sus modelos son marcas registradas de Tesla, Inc.</p>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calculadora de coste de carga de un Tesla",
+      "url": "https://byjosemaria.github.io/teslareferidos/guias/calculadora-coste-carga.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "es-ES",
+      "description": "Calcula el coste anual de cargar un Tesla según consumo, kilómetros y precio del kWh, y el valor de 1.000 km de Supercarga gratis.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "author": { "@type": "Person", "name": "José María" }
+    }
+    </script>
+
+    <script>
+    (function () {
+        var ids = ['modelo', 'consumo', 'km', 'precio-casa', 'precio-super'];
+        var el = {};
+        ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+        var money = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        var whole = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+        var oneDec = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+        var GASOLINA_L_100 = 6.5;
+        var GASOLINA_EUR_L = 1.60;
+
+        function set(id, text) {
+            var node = document.getElementById(id);
+            if (node) node.textContent = text;
+        }
+
+        function update() {
+            var c = parseFloat(el['consumo'].value);
+            var k = parseFloat(el['km'].value);
+            var pc = parseFloat(el['precio-casa'].value);
+            var ps = parseFloat(el['precio-super'].value);
+
+            var energiaAnual = (c / 100) * k;
+            var costeCasa = energiaAnual * pc;
+            var costeSuper = energiaAnual * ps;
+            var coste100Casa = c * pc;
+            var coste100Super = c * ps;
+            var valor1000 = (c / 100) * 1000 * ps;
+            var costeGasolina = (k / 100) * GASOLINA_L_100 * GASOLINA_EUR_L;
+            var ahorro = costeGasolina - costeCasa;
+
+            set('out-consumo', oneDec.format(c) + ' kWh/100 km');
+            set('out-km', whole.format(k) + ' km');
+            set('out-casa', money.format(pc) + ' €/kWh');
+            set('out-super', money.format(ps) + ' €/kWh');
+
+            set('r-valor', money.format(valor1000) + ' €');
+            set('r-100-casa', money.format(coste100Casa) + ' €');
+            set('r-100-super', money.format(coste100Super) + ' €');
+            set('r-anual-casa', whole.format(costeCasa) + ' €');
+            set('r-anual-super', whole.format(costeSuper) + ' €');
+            set('r-gasolina', whole.format(costeGasolina) + ' €');
+            set('r-ahorro', (ahorro > 0 ? '+' : '') + whole.format(ahorro) + ' €');
+        }
+
+        ids.forEach(function (id) {
+            el[id].addEventListener('input', update);
+        });
+
+        el['modelo'].addEventListener('change', function () {
+            el['consumo'].value = el['modelo'].value;
+            update();
+        });
+
+        update();
+    })();
+    </script>
+
+</body>
+</html>

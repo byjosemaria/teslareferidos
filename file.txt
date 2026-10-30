@@ -2,6 +2,7 @@ teslareferidos/                     (raíz del repo = sitio publicado)
 ├── index.html                      Landing principal (CSS + JS inline)
 ├── guias/
 │   ├── como-funciona-referidos-tesla.html
+│   ├── calculadora-coste-carga.html
 │   ├── codigo-referido-tesla.html
 │   ├── cuanto-cuesta-cargar-un-tesla.html
 │   └── model-3-vs-model-y.html
