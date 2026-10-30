@@ -491,7 +491,7 @@
                 <a href="model-3-vs-model-y.html">Model 3 vs Model Y</a>
                 <a href="codigo-referido-tesla.html">Código referido</a>
             </nav>
-            <p class="note">Oferta comprobada el 30 de octubre de 2026. Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. «Tesla» y los nombres de sus modelos son marcas registradas de Tesla, Inc.</p>
+            <p class="note"><span class="fecha-verificacion" data-fecha="2026-10-30">Oferta comprobada el 30 de octubre de 2026</span>. Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. «Tesla» y los nombres de sus modelos son marcas registradas de Tesla, Inc.</p>
         </div>
     </footer>
 
@@ -570,6 +570,35 @@
 
         update();
     })();
+    </script>
+
+    <script>
+        /* Fecha de verificación en tiempo relativo.
+           La fecha real vive en FECHA-VERIFICACION.txt y en el atributo data-fecha.
+           Si no hay JavaScript, se queda la fecha absoluta escrita en el HTML. */
+        (function () {
+            var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                         'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+            var nodos = document.querySelectorAll('[data-fecha]');
+            for (var i = 0; i < nodos.length; i++) {
+                var el = nodos[i];
+                var p = el.getAttribute('data-fecha').split('-');
+                var dia = parseInt(p[2], 10), mes = parseInt(p[1], 10), anio = parseInt(p[0], 10);
+                var f = new Date(anio, mes - 1, dia);
+                var hoy = new Date();
+                hoy.setHours(0, 0, 0, 0);
+                var dias = Math.round((hoy - f) / 86400000);
+                var texto;
+                if (dias <= 0) texto = 'hoy';
+                else if (dias === 1) texto = 'ayer';
+                else if (dias < 30) texto = 'hace ' + dias + ' días';
+                else if (dias < 60) texto = 'hace un mes';
+                else if (dias < 365) texto = 'hace ' + Math.floor(dias / 30) + ' meses';
+                else texto = 'hace más de un año';
+                el.title = 'Comprobada el ' + dia + ' de ' + MESES[mes - 1] + ' de ' + anio;
+                el.textContent = 'Oferta comprobada ' + texto;
+            }
+        })();
     </script>
 
 </body>

@@ -67,6 +67,17 @@ for f in "${ARCHIVOS[@]}"; do
   echo "  actualizado: ${f#./}"
 done
 
+# La fecha ISO también vive en data-fecha (la que usa el JS de tiempo relativo)
+# y en dateModified del JSON-LD. datePublished no se toca: es la fecha original.
+for f in "${ARCHIVOS[@]}"; do
+  case "$f" in
+    *.html)
+      sed -i "s|data-fecha=\"$VIEJA_ISO\"|data-fecha=\"$NUEVA_ISO\"|g" "$f"
+      sed -i "s|\"dateModified\": \"$VIEJA_ISO\"|\"dateModified\": \"$NUEVA_ISO\"|g" "$f"
+      ;;
+  esac
+done
+
 printf '%s\n' "$NUEVA_ISO" > "$ARCHIVO_FECHA"
 echo
 echo "Listo. Ahora:"

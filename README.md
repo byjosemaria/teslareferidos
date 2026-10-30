@@ -77,12 +77,21 @@ No olvides actualizar también `sitemap.xml` si cambia el dominio.
   ```
 
   El script reescribe la fecha en español en todos los HTML, el `README.md` y
-  el `file.txt`, y actualiza `FECHA-VERIFICACION.txt`.
+  el `file.txt`, actualiza el atributo `data-fecha` (el que usa el JavaScript),
+  `FECHA-VERIFICACION.txt` y `dateModified` del JSON-LD. No toca `datePublished`.
 
-  **No se actualiza sola a propósito.** El texto afirma que *tú* has comprobado
-  la oferta ese día; si cambiara sola cada mañana sería una afirmación falsa.
-  Para no olvidarlo, el workflow `recordatorio-verificacion.yml` se ejecuta el
-  día 1 de cada mes y abre un issue si han pasado más de 45 días.
+  **En pantalla se muestra en tiempo relativo**: «Oferta comprobada hoy»,
+  «ayer», «hace 12 días», «hace 3 meses». Lo calcula un script inline en cada
+  página a partir de `data-fecha`, así que cambia solo cada día sin intervención.
+  Si el visitante no tiene JavaScript, ve la fecha absoluta escrita en el HTML.
+  Al pasar el ratón por encima aparece la fecha exacta en el `title`.
+
+  **No se actualiza sola a «hoy» a propósito.** El texto afirma que *tú* has
+  comprobado la oferta ese día; si se pusiera la fecha de hoy cada mañana sería
+  una afirmación falsa. Lo que cambia automáticamente es el tiempo transcurrido,
+  que sí es un dato real. Para no olvidarlo, el workflow
+  `recordatorio-verificacion.yml` se ejecuta el día 1 de cada mes y abre un
+  issue si han pasado más de 45 días.
 
 - Las cifras de precios y consumos de las guías son **orientativas**; conviene
   revisarlas cada temporada.
