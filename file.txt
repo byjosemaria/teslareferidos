@@ -1,4 +1,17 @@
-mi-sitio-tesla/
-├── index.html
-├── style.css
-└── script.js
+teslareferidos/                     (raíz del repo = sitio publicado)
+├── index.html                      Landing principal (CSS + JS inline)
+├── guias/
+│   ├── como-funciona-referidos-tesla.html
+│   ├── cuanto-cuesta-cargar-un-tesla.html
+│   └── model-3-vs-model-y.html
+├── assets/
+│   └── og-image.png                Imagen Open Graph 1200x630
+├── robots.txt
+├── sitemap.xml
+├── .nojekyll
+├── README.md
+├── file.txt
+└── informacionFAQ.txt
+
+Enlace de referido: https://ts.la/josmara116770
+Publicado en: https://byjosemaria.github.io/teslareferidos/

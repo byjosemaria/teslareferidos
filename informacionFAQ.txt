@@ -1,48 +1,62 @@
 # Preguntas y Respuestas
-Todo lo que necesitas saber sobre el programa de referidos de Tesla
+Todo lo que necesitas saber sobre el enlace de referido y los 1.000 km de Supercarga
 
 ---
 
-## ¿Cuándo recibo los beneficios?
-Los premios se activan el mismo día en que tu contacto acepta la entrega de su vehículo. Al realizar el pedido, el beneficio aparecerá como **"pendiente"** en tu app de Tesla, pero no se liberará hasta que la entrega sea oficial.
+## ¿Cuántos km de Supercarga gratis recibo?
+1.000 km de Supercarga gratuita, que se acreditan en tu cuenta Tesla como créditos de carga. Es el beneficio del programa de referidos vigente; Tesla puede ajustar la cantidad o las condiciones, así que confirma el importe exacto en el aviso que aparece al abrir el configurador con el enlace.
 
 ---
 
-## ¿Puedo compartir mi enlace en redes sociales?
-¡Claro! Puedes difundir tu enlace de referencia en tus perfiles personales, foros de entusiastas o comunidades de vehículos eléctricos. Tesla permite su uso en canales legítimos, pero prohíbe el **spam masivo** o la promoción pagada (como anuncios en Google Ads).
+## ¿Usar el enlace tiene algún coste para mí?
+Ninguno. Pagas exactamente el mismo precio que si entraras directamente en tesla.com y configuraras el coche por tu cuenta. El beneficio lo aporta Tesla, no tú.
 
 ---
 
-## ¿Qué pasa si mi amigo no completa la compra?
-Si el pedido se cancela o el coche no es aceptado, **no recibirás ningún beneficio**. El estado del referido permanecerá como *"pendiente"* o desaparecerá de la app, sin penalización para tu cuenta.
+## ¿Cómo aplico el referido? ¿Hay un código?
+No hay ningún código que escribir. Basta con abrir el configurador desde el enlace: el referido queda asociado a tu sesión de compra y verás un mensaje de confirmación en la parte superior. Puedes comprobarlo antes de pagar.
 
 ---
 
-## ¿Los beneficios son acumulables?
-¡Sí! Los créditos de referidos se suman en un **único saldo** dentro de tu app de Tesla. Puedes combinarlos para canjearlos por premios más grandes, como:
-- Supercarga gratuita
-- Accesorios oficiales
-- Actualizaciones de software
-
-*¡Ojo!* Tienen **fecha de caducidad** (normalmente 12 meses desde su activación).
+## ¿Cuándo recibo los 1.000 km?
+Los km se liberan el mismo día en que aceptas la entrega de tu vehículo. Al hacer el pedido aparecen como «pendientes» en tu app de Tesla, pero no se acreditan hasta que la entrega es oficial.
 
 ---
+
+## ¿Dónde veo los kilómetros gratuitos?
+En la app de Tesla, sección «Carga», una vez entregado el coche. Ahí puedes consultar el saldo disponible y su fecha de caducidad.
+
+---
+
+## ¿Los kilómetros de Supercarga caducan?
+Sí. Tesla fija un plazo de validez para los créditos de referido, que suele contar desde la activación. Ese plazo puede cambiar, así que consulta la fecha exacta en la app o en las condiciones del programa vigentes en tu país.
+
+---
+
+## ¿Puedo aplicar el referido si ya he hecho el pedido?
+No. Tesla no permite añadir un referido a un pedido ya existente. Tienes que usar el enlace al iniciar el proceso de compra.
+
+---
+
+## ¿Qué ganas tú con esto?
+Otros 1.000 km de Supercarga gratuita cuando aceptas la entrega de tu coche. Es un beneficio mutuo que Tesla ofrece para que los propietarios recomienden la marca, y no encarece tu compra.
+
+---
+
 ## ¿Hay límite de referidos?
-Sí, hay un máximo de **10 recomendaciones por año natural**. Tu cuenta Tesla solo registrará hasta 10 pedidos exitosos de amigos al año, y los beneficios de fidelidad (como compras propias) también están limitados a **10 veces en toda la vida de la cuenta**.
+Tesla establece los límites del programa y puede modificarlos o cerrarlo. Para conocer el máximo vigente, revisa las condiciones oficiales del programa de referidos: https://www.tesla.com/es_es/support/referral-program
 
 ---
-## ¿Cómo aplico el código de descuento?
-Es muy fácil. Haz clic en los botones **‘Reserva mi Tesla’** de esta página. Te llevarán directamente al configurador oficial de Tesla con el código ya aplicado, y verás un mensaje de confirmación en la parte superior.
+
+## ¿Vale para coches de ocasión o de inventario?
+Depende de las condiciones vigentes de Tesla y del tipo de vehículo. Lo más fiable es abrir el configurador desde el enlace: si el referido se aplica a ese coche, verás el aviso de confirmación antes de pagar.
 
 ---
-## ¿Cuándo recibo mis km de Supercarga gratis?
-Los créditos de Supercarga se añaden a la sección **‘Carga’** de tu app de Tesla **tras la entrega y aceptación del vehículo**. No están disponibles al hacer el pedido, sino hasta que el coche llega a tus manos.
+
+## ¿Puedo compartir este enlace con otras personas?
+Sí, siempre que sea en canales legítimos: tus redes personales, grupos de propietarios o foros de vehículos eléctricos. Tesla prohíbe el spam masivo y la publicidad pagada con enlaces de referido (por ejemplo, anuncios en Google Ads), y puede anular los beneficios si se detecta.
 
 ---
-## ¿Puedo aplicar el código si ya he realizado el pedido?
-No. Tesla no permite añadir códigos de referencia a pedidos ya existentes. Debes usar el enlace de referencia **al iniciar el proceso de compra**.
 
----
-## ¿Los créditos de Supercarga caducan?
-Sí, suelen tener una fecha de vencimiento (generalmente entre **6 meses y 1 año después de la entrega**), aunque Tesla puede modificar estos plazos.
-
+## Aviso
+Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. Este sitio no está afiliado oficialmente con Tesla, Inc.
