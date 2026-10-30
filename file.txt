@@ -2,10 +2,12 @@ teslareferidos/                     (raíz del repo = sitio publicado)
 ├── index.html                      Landing principal (CSS + JS inline)
 ├── guias/
 │   ├── como-funciona-referidos-tesla.html
+│   ├── codigo-referido-tesla.html
 │   ├── cuanto-cuesta-cargar-un-tesla.html
 │   └── model-3-vs-model-y.html
 ├── assets/
-│   └── og-image.png                Imagen Open Graph 1200x630
+│   ├── og-image.png                Imagen Open Graph 1200x630
+│   └── autor.png                   Imagen del bloque de autor 600x600
 ├── robots.txt
 ├── sitemap.xml
 ├── .nojekyll
@@ -15,3 +17,4 @@ teslareferidos/                     (raíz del repo = sitio publicado)
 
 Enlace de referido: https://ts.la/josmara116770
 Publicado en: https://byjosemaria.github.io/teslareferidos/
+Última verificación de la oferta: 30 de octubre de 2026

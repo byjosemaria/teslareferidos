@@ -12,10 +12,12 @@ desde el enlace recibe **1.000 km de Supercarga gratis**, y yo otros tantos.
 ├── index.html                          Landing principal (CSS y JS inline)
 ├── guias/
 │   ├── como-funciona-referidos-tesla.html
+│   ├── codigo-referido-tesla.html
 │   ├── cuanto-cuesta-cargar-un-tesla.html
 │   └── model-3-vs-model-y.html
 ├── assets/
-│   └── og-image.png                    Imagen para compartir (1200×630)
+│   ├── og-image.png                    Imagen para compartir (1200×630)
+│   └── autor.png                       Imagen del bloque de autor (600×600)
 ├── robots.txt
 ├── sitemap.xml
 ├── .nojekyll                           Evita el procesado de Jekyll en GitHub Pages
@@ -56,9 +58,18 @@ No olvides actualizar también `sitemap.xml` si cambia el dominio.
 
 ## Mantenimiento
 
+- **Fecha de verificación:** el texto «Oferta comprobada el 30 de octubre de 2026»
+  aparece en el hero y en el pie de las cuatro páginas. Actualízala cuando
+  compruebes la oferta, o perderá credibilidad.
+
+  ```bash
+  grep -rl "30 de octubre de 2026" --include="*.html" . \
+    | xargs sed -i 's/30 de octubre de 2026/NUEVA FECHA/g'
+  ```
+
 - Las cifras de precios y consumos de las guías son **orientativas**; conviene
   revisarlas cada temporada.
 - Los términos del programa de referidos los fija Tesla y cambian a menudo.
   El texto usa fórmulas condicionales a propósito: no prometas cifras cerradas.
 - La imagen `assets/og-image.png` se generó renderizando HTML con Chrome
-  headless a 1200×630.
+  headless a 1200×630, y `assets/autor.png` a 600×600 con el mismo método.
