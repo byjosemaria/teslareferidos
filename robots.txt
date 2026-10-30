@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://byjosemaria.github.io/teslareferidos/sitemap.xml

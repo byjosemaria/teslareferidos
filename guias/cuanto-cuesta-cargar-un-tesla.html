@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuánto cuesta cargar un Tesla en España (2026)</title>
+    <meta name="description" content="Precio de cargar un Tesla en casa, en Supercargador y en carga pública. Cómo calcular el coste por 100 km y cuánto valen 1.000 km de Supercarga gratis.">
+    <link rel="canonical" href="https://byjosemaria.github.io/teslareferidos/guias/cuanto-cuesta-cargar-un-tesla.html">
+
+    <meta property="og:title" content="Cuánto cuesta cargar un Tesla en España">
+    <meta property="og:description" content="Coste real de cargar en casa, en Supercargador y en red pública. Cómo calcularlo por 100 km y cuánto ahorras con 1.000 km gratis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://byjosemaria.github.io/teslareferidos/guias/cuanto-cuesta-cargar-un-tesla.html">
+    <meta property="og:image" content="https://byjosemaria.github.io/teslareferidos/assets/og-image.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Tesla Referidos">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e82127'/%3E%3Cpath d='M17.5 6 9 17h5.5L13 26l8.5-12H16l1.5-8z' fill='%23fff'/%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #171a20;
+            --dark: #0d0e12;
+            --white: #ffffff;
+            --gray: #5c5e62;
+            --light: #f4f4f4;
+            --border: #e3e3e3;
+            --red: #e82127;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--gray);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Navbar ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .navbar .inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            height: 68px;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .logo em { font-style: normal; color: var(--red); }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover { color: var(--white); }
+
+        .nav-cta {
+            padding: 9px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+        /* ---------- Cabecera del artículo ---------- */
+        .article-header {
+            background: radial-gradient(1000px 500px at 50% -20%, #262a33 0%, var(--dark) 60%);
+            color: var(--white);
+            padding: 80px 0 70px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1.1rem;
+        }
+
+        .article-header h1 {
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            line-height: 1.18;
+            margin-bottom: 1rem;
+            max-width: 720px;
+        }
+
+        .article-header .lead {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 620px;
+        }
+
+        .article-meta {
+            margin-top: 1.75rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* ---------- Artículo ---------- */
+        .article { padding: 70px 0 90px; }
+
+        .article h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--black);
+            letter-spacing: -0.3px;
+            margin: 2.75rem 0 1rem;
+        }
+
+        .article h2:first-child { margin-top: 0; }
+
+        .article h3 {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 2rem 0 0.6rem;
+        }
+
+        .article p { margin-bottom: 1.15rem; font-size: 1.02rem; }
+
+        .article ul,
+        .article ol { margin: 0 0 1.35rem 1.4rem; }
+
+        .article li { margin-bottom: 0.5rem; font-size: 1.02rem; }
+
+        .article strong { color: var(--black); }
+
+        .article a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+
+        .article blockquote {
+            border-left: 3px solid var(--red);
+            background: var(--light);
+            padding: 1.1rem 1.4rem;
+            margin: 1.5rem 0;
+            font-size: 0.98rem;
+        }
+
+        .article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .article th,
+        .article td {
+            text-align: left;
+            padding: 0.75rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .article th { color: var(--black); font-weight: 600; background: var(--light); }
+
+        .formula {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.9rem;
+            background: var(--light);
+            border-left: 3px solid var(--black);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            color: var(--black);
+            overflow-x: auto;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta-box {
+            background: radial-gradient(600px 300px at 50% 0%, #262a33 0%, var(--dark) 70%);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h2 {
+            color: var(--white);
+            margin: 0 0 0.75rem;
+            font-size: 1.4rem;
+        }
+
+        .cta-box p {
+            opacity: 0.85;
+            margin: 0 auto 1.5rem;
+            max-width: 440px;
+            font-size: 0.98rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 32px;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary { background: var(--red); color: var(--white); }
+        .btn-primary:hover { background: #c81a20; }
+        .cta-box a { text-decoration: none; }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            background: var(--black);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2.5rem 24px;
+            font-size: 0.8rem;
+        }
+
+        .footer a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .footer a:hover { color: var(--red); }
+        .footer p + p { margin-top: 0.4rem; }
+
+        .footer .links {
+            margin-top: 1.1rem;
+            display: flex;
+            gap: 1.1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .note {
+            max-width: 640px;
+            margin: 1.1rem auto 0;
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 640px) {
+            .article-header { padding: 60px 0 50px; }
+            .article { padding: 50px 0 70px; }
+            .article table { font-size: 0.88rem; }
+            .article th, .article td { padding: 0.6rem 0.5rem; }
+            .nav-cta { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="inner">
+            <a href="../index.html" class="logo">Tesla<em>Referidos</em></a>
+            <a href="../index.html" class="back-link">← Volver al inicio</a>
+            <a href="https://ts.la/josmara116770" class="nav-cta" target="_blank" rel="noopener sponsored">Reserva tu Tesla</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container">
+            <span class="tag">Carga</span>
+            <h1>Cuánto cuesta cargar un Tesla en España</h1>
+            <p class="lead">El coste real de mover un Tesla depende de dónde cargues, no del coche. Aquí tienes las cuentas claras, con ejemplos, y cuánto valen realmente 1.000 km gratis.</p>
+            <p class="article-meta">Actualizado en octubre de 2026 · 7 min de lectura</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <p>La pregunta que más se hace antes de comprar un coche eléctrico no es cuánta autonomía tiene, sino cuánto cuesta llenarlo. La respuesta corta: <strong>entre tres y cinco veces menos que un coche de gasolina equivalente</strong>, siempre que cargues principalmente en casa.</p>
+
+            <p>La respuesta larga depende de tres factores: el consumo del coche, el precio del kWh y el tipo de punto de carga. Vamos por partes.</p>
+
+            <h2>Los tres escenarios de carga</h2>
+
+            <h3>1. Carga en casa o en el garaje</h3>
+
+            <p>Es el escenario más barato con diferencia y el que usan a diario la mayoría de propietarios. Con un enchufe doméstico o un wallbox, el coste depende únicamente de tu tarifa eléctrica.</p>
+
+            <p>Con una tarifa con discriminación horaria, cargando de noche en periodo valle, el precio suele moverse en una horquilla de <strong>0,10 a 0,20 €/kWh</strong>. Si además tienes placas solares con excedentes, el coste puede acercarse a cero en las horas centrales del día.</p>
+
+            <h3>2. Supercargador de Tesla</h3>
+
+            <p>La red Supercharger es la opción rápida para viajes largos. El precio varía por país, por estación y por franja horaria, y se consulta siempre en la app o en la pantalla del coche antes de enchufar.</p>
+
+            <p>En España, el rango habitual se ha movido en torno a <strong>0,35 – 0,50 €/kWh</strong> en los últimos años. Es más caro que cargar en casa, pero sigue siendo competitivo frente al combustible fósil en un viaje.</p>
+
+            <h3>3. Red pública de terceros</h3>
+
+            <p>Aquí hay de todo: desde puntos gratuitos en aparcamientos de centros comerciales hasta cargadores ultrarrápidos con tarifas de <strong>0,30 a 0,60 €/kWh</strong>, a veces con coste adicional por minuto de ocupación. Es la opción más irregular y la que menos conviene usar de forma habitual.</p>
+
+            <h2>Cómo calcular el coste por 100 km</h2>
+
+            <p>La fórmula es sencilla y sirve para cualquier coche eléctrico:</p>
+
+            <div class="formula">
+                coste por 100 km = consumo (kWh/100 km) × precio del kWh
+            </div>
+
+            <p>El consumo real depende mucho del estilo de conducción, la velocidad y la temperatura. Como referencia orientativa, un Model 3 suele moverse entre <strong>14 y 16 kWh/100 km</strong>, y un Model Y entre <strong>16 y 18 kWh/100 km</strong> en uso mixto. En autopista a velocidad alta, ambos suben.</p>
+
+            <h3>Ejemplo con números redondos</h3>
+
+            <p>Supongamos un consumo de 16 kWh/100 km:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dónde cargas</th>
+                        <th>Precio kWh</th>
+                        <th>Coste / 100 km</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Casa, tarifa valle</td>
+                        <td>0,12 €</td>
+                        <td>≈ 1,92 €</td>
+                    </tr>
+                    <tr>
+                        <td>Casa, tarifa media</td>
+                        <td>0,18 €</td>
+                        <td>≈ 2,88 €</td>
+                    </tr>
+                    <tr>
+                        <td>Supercargador</td>
+                        <td>0,42 €</td>
+                        <td>≈ 6,72 €</td>
+                    </tr>
+                    <tr>
+                        <td>Red pública rápida</td>
+                        <td>0,55 €</td>
+                        <td>≈ 8,80 €</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Comparado con un coche de gasolina que gaste 6,5 l/100 km a 1,60 €/l (≈ 10,40 €/100 km), la diferencia es evidente incluso cargando siempre en la red pública.</p>
+
+            <blockquote>Los precios son orientativos y cambian con el mercado, la tarifa contratada y la estación. Lo que no cambia es la fórmula: consumo por precio del kWh.</blockquote>
+
+            <h2>Cuánto valen 1.000 km de Supercarga gratis</h2>
+
+            <p>Con un consumo de 16 kWh/100 km, 1.000 km equivalen a <strong>160 kWh</strong>. A un precio de Supercargador de 0,42 €/kWh, eso son unos <strong>67 €</strong> de carga que no pagas.</p>
+
+            <p>Si tu consumo es más bajo, el valor baja; si conduces un Model Y o haces mucha autopista, sube. En cualquier caso, es un ahorro real y directo, no un descuento simbólico.</p>
+
+            <h3>Un matiz importante</h3>
+
+            <p>Los kilómetros de referido se acreditan como créditos de Supercarga, así que <strong>se consumen en la red de Tesla</strong>, no en cargadores de terceros. Si normalmente cargas en casa, el ahorro real es menor en la práctica: los usarás sobre todo en viajes.</p>
+
+            <p>Aun así, para quien hace desplazamientos largos con cierta frecuencia, el beneficio se aprovecha entero.</p>
+
+            <h2>Cinco formas de pagar menos por cargar</h2>
+
+            <ol>
+                <li><strong>Cambia a una tarifa con discriminación horaria</strong> y programa la carga de noche desde el coche o la app.</li>
+                <li><strong>Prioriza la carga en casa</strong> para el día a día; reserva la red pública para viajes.</li>
+                <li><strong>Conduce con anticipación</strong>: la conducción agresiva dispara el consumo más que en un coche térmico.</li>
+                <li><strong>Usa la preclimatización enchufado</strong>, no con la batería, para calentar o enfriar el habitáculo.</li>
+                <li><strong>Revisa la presión de los neumáticos</strong>: una presión baja aumenta el consumo de forma notable.</li>
+            </ol>
+
+            <h2>Resumen</h2>
+
+            <ul>
+                <li>Cargar en casa es lo más barato: <strong>2-3 € por 100 km</strong>.</li>
+                <li>En Supercargador, <strong>6-7 € por 100 km</strong>.</li>
+                <li>En red pública rápida, <strong>hasta 9 € por 100 km</strong>.</li>
+                <li>1.000 km gratis equivalen a <strong>unos 60-80 €</strong> de Supercarga, según consumo y tarifa.</li>
+            </ul>
+
+            <p class="disclaimer">Los precios citados son orientativos y pueden variar según la tarifa eléctrica contratada, la estación de carga, la fecha y las condiciones de Tesla. Consulta siempre el precio vigente en la app antes de cargar.</p>
+
+            <div class="cta-box">
+                <h2>Empieza con 1.000 km gratis</h2>
+                <p>Si vas a encargar tu Tesla, usa mi enlace de referido: tú te llevas 1.000 km de Supercarga y yo también. Sin coste adicional.</p>
+                <a href="https://ts.la/josmara116770" class="btn btn-primary" target="_blank" rel="noopener sponsored">Reserva con mi enlace</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Tesla Referidos. Información no oficial.</p>
+            <p>Este sitio no está afiliado oficialmente con Tesla, Inc.</p>
+            <nav class="links">
+                <a href="../index.html">Inicio</a>
+                <a href="como-funciona-referidos-tesla.html">Referidos</a>
+                <a href="cuanto-cuesta-cargar-un-tesla.html">Coste de carga</a>
+                <a href="model-3-vs-model-y.html">Model 3 vs Model Y</a>
+            </nav>
+            <p class="note">Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. «Tesla» y los nombres de sus modelos son marcas registradas de Tesla, Inc.</p>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Cuánto cuesta cargar un Tesla en España",
+      "description": "Precio de cargar un Tesla en casa, en Supercargador y en carga pública. Cómo calcular el coste por 100 km y cuánto valen 1.000 km de Supercarga gratis.",
+      "inLanguage": "es-ES",
+      "dateModified": "2026-10-30",
+      "mainEntityOfPage": "https://byjosemaria.github.io/teslareferidos/guias/cuanto-cuesta-cargar-un-tesla.html",
+      "author": { "@type": "Person", "name": "byjosemaria" },
+      "publisher": { "@type": "Organization", "name": "Tesla Referidos" }
+    }
+    </script>
+
+</body>
+</html>

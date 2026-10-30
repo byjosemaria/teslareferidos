@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo funciona el programa de referidos de Tesla (2026)</title>
+    <meta name="description" content="Qué es un enlace de referido de Tesla, cómo se aplica al pedido, cuándo llegan los 1.000 km de Supercarga y qué errores evitar. Guía paso a paso.">
+    <link rel="canonical" href="https://byjosemaria.github.io/teslareferidos/guias/como-funciona-referidos-tesla.html">
+
+    <meta property="og:title" content="Cómo funciona el programa de referidos de Tesla">
+    <meta property="og:description" content="Qué es un enlace de referido, cómo se aplica al pedido y cuándo llegan los 1.000 km de Supercarga gratis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://byjosemaria.github.io/teslareferidos/guias/como-funciona-referidos-tesla.html">
+    <meta property="og:image" content="https://byjosemaria.github.io/teslareferidos/assets/og-image.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Tesla Referidos">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e82127'/%3E%3Cpath d='M17.5 6 9 17h5.5L13 26l8.5-12H16l1.5-8z' fill='%23fff'/%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #171a20;
+            --dark: #0d0e12;
+            --white: #ffffff;
+            --gray: #5c5e62;
+            --light: #f4f4f4;
+            --border: #e3e3e3;
+            --red: #e82127;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--gray);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Navbar ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .navbar .inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            height: 68px;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .logo em { font-style: normal; color: var(--red); }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover { color: var(--white); }
+
+        .nav-cta {
+            padding: 9px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+        /* ---------- Cabecera del artículo ---------- */
+        .article-header {
+            background: radial-gradient(1000px 500px at 50% -20%, #262a33 0%, var(--dark) 60%);
+            color: var(--white);
+            padding: 80px 0 70px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1.1rem;
+        }
+
+        .article-header h1 {
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            line-height: 1.18;
+            margin-bottom: 1rem;
+            max-width: 720px;
+        }
+
+        .article-header .lead {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 620px;
+        }
+
+        .article-meta {
+            margin-top: 1.75rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* ---------- Artículo ---------- */
+        .article { padding: 70px 0 90px; }
+
+        .article h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--black);
+            letter-spacing: -0.3px;
+            margin: 2.75rem 0 1rem;
+        }
+
+        .article h2:first-child { margin-top: 0; }
+
+        .article h3 {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 2rem 0 0.6rem;
+        }
+
+        .article p { margin-bottom: 1.15rem; font-size: 1.02rem; }
+
+        .article ul,
+        .article ol { margin: 0 0 1.35rem 1.4rem; }
+
+        .article li { margin-bottom: 0.5rem; font-size: 1.02rem; }
+
+        .article strong { color: var(--black); }
+
+        .article a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+
+        .article blockquote {
+            border-left: 3px solid var(--red);
+            background: var(--light);
+            padding: 1.1rem 1.4rem;
+            margin: 1.5rem 0;
+            font-size: 0.98rem;
+        }
+
+        .article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .article th,
+        .article td {
+            text-align: left;
+            padding: 0.75rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .article th { color: var(--black); font-weight: 600; background: var(--light); }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta-box {
+            background: radial-gradient(600px 300px at 50% 0%, #262a33 0%, var(--dark) 70%);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h2 {
+            color: var(--white);
+            margin: 0 0 0.75rem;
+            font-size: 1.4rem;
+        }
+
+        .cta-box p {
+            opacity: 0.85;
+            margin: 0 auto 1.5rem;
+            max-width: 440px;
+            font-size: 0.98rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 32px;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary { background: var(--red); color: var(--white); }
+        .btn-primary:hover { background: #c81a20; }
+        .cta-box a { text-decoration: none; }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            background: var(--black);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2.5rem 24px;
+            font-size: 0.8rem;
+        }
+
+        .footer a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .footer a:hover { color: var(--red); }
+        .footer p + p { margin-top: 0.4rem; }
+
+        .footer .links {
+            margin-top: 1.1rem;
+            display: flex;
+            gap: 1.1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .note {
+            max-width: 640px;
+            margin: 1.1rem auto 0;
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 640px) {
+            .article-header { padding: 60px 0 50px; }
+            .article { padding: 50px 0 70px; }
+            .article table { font-size: 0.88rem; }
+            .article th, .article td { padding: 0.6rem 0.5rem; }
+            .nav-cta { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="inner">
+            <a href="../index.html" class="logo">Tesla<em>Referidos</em></a>
+            <a href="../index.html" class="back-link">← Volver al inicio</a>
+            <a href="https://ts.la/josmara116770" class="nav-cta" target="_blank" rel="noopener sponsored">Reserva tu Tesla</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container">
+            <span class="tag">Referidos</span>
+            <h1>Cómo funciona el programa de referidos de Tesla</h1>
+            <p class="lead">Qué es exactamente un enlace de referido, cómo se aplica a tu pedido, cuándo llegan los 1.000 km de Supercarga y qué errores conviene evitar.</p>
+            <p class="article-meta">Actualizado en octubre de 2026 · 6 min de lectura</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <p>Si estás a punto de encargar un Tesla, probablemente hayas visto decenas de enlaces de referido en redes sociales, foros y grupos de propietarios. La idea es sencilla, pero hay varios detalles que se explican mal y que acaban costando el beneficio a mucha gente.</p>
+
+            <p>Esta guía explica el mecanismo tal y como funciona hoy: qué hace el enlace, en qué momento se aplica, cuándo se acredita la recompensa y qué situaciones lo invalidan.</p>
+
+            <h2>Qué es un enlace de referido de Tesla</h2>
+
+            <p>Un enlace de referido es una URL personal que Tesla asigna a cada propietario. Cuando alguien abre el configurador desde ese enlace y completa un pedido, Tesla registra que esa compra vino recomendada por esa persona.</p>
+
+            <p>El programa es <strong>mutuo por diseño</strong>: no es un descuento que paga el vendedor, sino una recompensa que Tesla entrega a las dos partes para incentivar la recomendación entre clientes. En el formato actual, el beneficio típico son <strong>1.000 km de Supercarga gratuita para el comprador y otros 1.000 km para quien refiere</strong>.</p>
+
+            <blockquote>Importante: no es un código de descuento ni rebaja el precio del coche. El importe que pagas es exactamente el mismo que si entraras en tesla.com por tu cuenta.</blockquote>
+
+            <h2>Cómo se aplica, paso a paso</h2>
+
+            <ol>
+                <li><strong>Abres el configurador desde el enlace.</strong> Al hacer clic, Tesla asocia el referido a tu sesión de navegación. Verás un aviso de confirmación en la parte superior de la página.</li>
+                <li><strong>Configuras el coche.</strong> Modelo, versión, color, llantas, interior y extras. Puedes cambiar lo que quieras: el referido no depende de la configuración.</li>
+                <li><strong>Completas el pedido y pagas la reserva.</strong> Aquí es donde el referido queda vinculado definitivamente a tu compra.</li>
+                <li><strong>Esperas la entrega.</strong> Durante ese tiempo el referido aparece como «pendiente» en la app de Tesla.</li>
+                <li><strong>Aceptas el vehículo.</strong> Ese es el momento en que se liberan los kilómetros.</li>
+            </ol>
+
+            <p>El punto crítico es el primero: <strong>el referido solo se puede aplicar al iniciar la compra</strong>. Si ya tienes un pedido en curso, Tesla no permite añadirlo después, ni por teléfono ni en el centro de entrega.</p>
+
+            <h2>Cuándo llegan los 1.000 km</h2>
+
+            <p>No llegan al reservar, sino <strong>cuando aceptas la entrega del coche</strong>. En ese momento Tesla emite los créditos y aparecen en la app, dentro de la sección <strong>«Carga»</strong>.</p>
+
+            <p>Ahí puedes consultar tres cosas: el saldo disponible, el consumo que vas haciendo y la <strong>fecha de caducidad</strong>. Ese plazo lo fija Tesla y puede variar, así que merece la pena revisarlo en cuanto se activen.</p>
+
+            <h3>Qué pasa si el pedido se cancela</h3>
+
+            <p>Si cancelas el pedido o rechazas el vehículo en la entrega, no se genera ningún beneficio. El referido simplemente desaparece de la app, sin penalización para ninguna de las dos partes.</p>
+
+            <h2>Los errores más habituales</h2>
+
+            <ul>
+                <li><strong>Abrir el configurador sin el enlace.</strong> Si primero entras en tesla.com y luego pegas el enlace en otra pestaña, la asociación puede no hacerse. Empieza siempre por el enlace.</li>
+                <li><strong>Cambiar de navegador o usar modo incógnito a mitad del proceso.</strong> La asociación vive en la sesión; si la pierdes, se pierde el referido.</li>
+                <li><strong>Pedir el coche por teléfono o en el centro.</strong> El personal comercial no puede aplicar referidos retroactivamente.</li>
+                <li><strong>Comprar un coche de inventario sin comprobar el aviso.</strong> Según el tipo de vehículo y las condiciones vigentes, el referido puede no aplicar. El aviso de confirmación antes de pagar es tu garantía.</li>
+            </ul>
+
+            <h2>Límites y normas del programa</h2>
+
+            <p>Tesla marca las reglas y las cambia con cierta frecuencia: número máximo de referidos, modelos elegibles, importe de la recompensa y duración del programa. Las condiciones vigentes están siempre en la <a href="https://www.tesla.com/es_es/support/referral-program" target="_blank" rel="noopener nofollow">página oficial del programa de referidos</a>.</p>
+
+            <p>Hay dos prohibiciones que se incumplen mucho y que pueden anular el beneficio:</p>
+
+            <ul>
+                <li><strong>Spam masivo</strong>: envíos indiscriminados por correo, mensajes privados o comentarios.</li>
+                <li><strong>Publicidad pagada</strong>: anuncios en Google Ads, Meta Ads o cualquier plataforma que use el enlace como creatividad.</li>
+            </ul>
+
+            <p>Compartir el enlace en tus redes personales, en un grupo de propietarios o en un foro de vehículos eléctricos sí está permitido.</p>
+
+            <h2>Resumen rápido</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pregunta</th>
+                        <th>Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>¿Cuánto cuesta usarlo?</td>
+                        <td>Nada. Mismo precio que sin referido.</td>
+                    </tr>
+                    <tr>
+                        <td>¿Hay que escribir un código?</td>
+                        <td>No. Solo abrir el configurador desde el enlace.</td>
+                    </tr>
+                    <tr>
+                        <td>¿Cuándo se acredita?</td>
+                        <td>Al aceptar la entrega del vehículo.</td>
+                    </tr>
+                    <tr>
+                        <td>¿Dónde se ve?</td>
+                        <td>App de Tesla, sección «Carga».</td>
+                    </tr>
+                    <tr>
+                        <td>¿Se puede añadir después?</td>
+                        <td>No. Solo al iniciar la compra.</td>
+                    </tr>
+                    <tr>
+                        <td>¿Caduca?</td>
+                        <td>Sí, según el plazo que fije Tesla.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="disclaimer">Este artículo es informativo y no sustituye las condiciones oficiales de Tesla, que pueden cambiar sin previo aviso. Verifica siempre el importe y las condiciones del programa en el aviso que aparece en el configurador antes de confirmar tu pedido.</p>
+
+            <div class="cta-box">
+                <h2>¿Vas a encargar tu Tesla?</h2>
+                <p>Usa mi enlace de referido y llévate 1.000 km de Supercarga gratis. Yo también los recibo, y a ti no te cuesta nada más.</p>
+                <a href="https://ts.la/josmara116770" class="btn btn-primary" target="_blank" rel="noopener sponsored">Reserva con mi enlace</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Tesla Referidos. Información no oficial.</p>
+            <p>Este sitio no está afiliado oficialmente con Tesla, Inc.</p>
+            <nav class="links">
+                <a href="../index.html">Inicio</a>
+                <a href="como-funciona-referidos-tesla.html">Referidos</a>
+                <a href="cuanto-cuesta-cargar-un-tesla.html">Coste de carga</a>
+                <a href="model-3-vs-model-y.html">Model 3 vs Model Y</a>
+            </nav>
+            <p class="note">Los beneficios dependen de las condiciones del programa de referidos de Tesla vigentes en el momento del pedido y pueden cambiar o finalizar sin previo aviso. «Tesla» y los nombres de sus modelos son marcas registradas de Tesla, Inc.</p>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Cómo funciona el programa de referidos de Tesla",
+      "description": "Qué es un enlace de referido de Tesla, cómo se aplica al pedido, cuándo llegan los 1.000 km de Supercarga y qué errores evitar.",
+      "inLanguage": "es-ES",
+      "dateModified": "2026-10-30",
+      "mainEntityOfPage": "https://byjosemaria.github.io/teslareferidos/guias/como-funciona-referidos-tesla.html",
+      "author": { "@type": "Person", "name": "byjosemaria" },
+      "publisher": { "@type": "Organization", "name": "Tesla Referidos" }
+    }
+    </script>
+
+</body>
+</html>
