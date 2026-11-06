@@ -78,6 +78,12 @@ for f in "${ARCHIVOS[@]}"; do
   esac
 done
 
+# El sitemap también declara la última modificación de cada página.
+if [ -f sitemap.xml ]; then
+  sed -i "s|<lastmod>$VIEJA_ISO</lastmod>|<lastmod>$NUEVA_ISO</lastmod>|g" sitemap.xml
+  echo "  actualizado: sitemap.xml"
+fi
+
 printf '%s\n' "$NUEVA_ISO" > "$ARCHIVO_FECHA"
 echo
 echo "Listo. Ahora:"

@@ -65,7 +65,7 @@ No olvides actualizar también `sitemap.xml` si cambia el dominio.
 
 ## Mantenimiento
 
-- **Fecha de verificación:** el texto «Oferta comprobada el 30 de octubre de 2026»
+- **Fecha de verificación:** el texto «Oferta comprobada el 6 de noviembre de 2026»
   aparece en el hero y en el pie de todas las páginas. La fuente de verdad es
   `FECHA-VERIFICACION.txt` (formato `AAAA-MM-DD`). Cuando compruebes que la
   oferta sigue vigente, ejecuta:
